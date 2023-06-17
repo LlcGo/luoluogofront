@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup >
 import Baselayout from './layouts/Baselayout.vue'
 </script>
 
