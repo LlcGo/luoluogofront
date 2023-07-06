@@ -8,9 +8,12 @@
 <template #right>
     <van-icon name="search" size="18" />
  </template>
+
 </van-nav-bar>
+ <div id="content">
+  <router-view></router-view>
+ </div>
  
- <router-view></router-view>
 
 <van-tabbar v-model="active" >
   <van-tabbar-item icon="home-o" to="/" name="index">主页</van-tabbar-item>
@@ -28,12 +31,14 @@ import { showToast } from 'vant';
 
 const router = useRouter();
 console.log(router)
-const onClickLeft = () => {router.push('/')};
+const onClickLeft = () => {router.back()};
 const onClickRight = () => {router.push('/search')};
  const active = ref("index");
     // const onChange = (index) => showToast(`标签 ${index}`);
 </script>
 
 <style scoped>
-
+#content{
+  padding-bottom: 50px;
+}
 </style>

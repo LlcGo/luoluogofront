@@ -1,7 +1,6 @@
 <template>
   <div>
     <van-search v-model="search" @search="onSearch" placeholder="请输入搜索关键词" />
-    <van-button type="primary" @click="addTeam">创建队伍</van-button>
     <team-card-list :team-list="TeamList">
     </team-card-list>
     <van-empty v-if="TeamList?.length < 1" image-size="10rem" description="数据为空" />
@@ -19,7 +18,7 @@ import {showFailToast, showSuccessToast, showToast} from "vant";
  const search = ref('');
 
  const getList = async (search='') => {
-   const res = await myAxios.get('/list',{
+   const res = await myAxios.get('/list/join/team',{
      params:{
        searText:search
      }

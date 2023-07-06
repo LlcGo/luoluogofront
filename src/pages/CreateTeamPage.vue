@@ -19,7 +19,7 @@ import {showFailToast, showSuccessToast, showToast} from "vant";
  const search = ref('');
 
  const getList = async (search='') => {
-   const res = await myAxios.get('/list',{
+   const res = await myAxios.get('/list/my/team',{
      params:{
        searText:search
      }

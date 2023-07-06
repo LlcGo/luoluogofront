@@ -25,6 +25,9 @@
   v-model:main-active-index="activeIndex"
   :items="tagsList"
 />
+<div style="padding:12px">
+  <van-button type="primary" block @click="toSearch">搜索</van-button>
+</div>
 
 </template>
 
@@ -35,19 +38,18 @@ import {useRouter} from 'vue-router'
 
 let init =[
       {
-        text: '浙江',
+        text: '性别',
         children: [
-          { text: '杭州', id: '杭州' },
-          { text: '温州', id: 2 },
-          { text: '宁波', id: 3 },
+          { text: '男', id: '男' },
+          { text: '女', id: '女' },
         ],
       },
       {
-        text: '江苏',
+        text: '爱好',
         children: [
-          { text: '南京', id: 4 },
-          { text: '无锡', id: 5 },
-          { text: '徐州', id: 6 },
+          { text: 'java', id: 'java' },
+          { text: 'python', id: 'python' },
+          { text: 'c++', id: 'c++' },
         ],
       },
     ];
@@ -71,15 +73,25 @@ const onCancel = () => {
 const activeIds = ref([]);
 const activeIndex = ref(0);
 //标签
-
 const tagsList = ref(init)
 
-    //删除标签
-  const  close= (tag) =>{
-    activeIds.value = activeIds.value.filter(item => {
-      return item !== tag;
-     })
-  }
+//删除标签
+const  close= (tag) =>{
+  activeIds.value = activeIds.value.filter(item => {
+    return item !== tag;
+    })
+}
+
+const toSearch = () =>{
+  console.log('toseach',activeIds.value)
+   router.push({
+    path:'/user/searchResultPage',
+    query:{
+      tags: activeIds.value,
+    }
+   })
+}
+
 </script>
 
 <style>
