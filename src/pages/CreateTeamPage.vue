@@ -1,7 +1,7 @@
 <template>
   <div>
     <van-search v-model="search" @search="onSearch" placeholder="请输入搜索关键词" />
-    <van-button type="primary" @click="addTeam">创建队伍</van-button>
+    <van-button class="add-button" icon="plus" type="primary" @click="addTeam"></van-button>
     <team-card-list :team-list="TeamList">
     </team-card-list>
     <van-empty v-if="TeamList?.length < 1" image-size="10rem" description="数据为空" />
